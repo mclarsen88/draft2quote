@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "strict": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "skipLibCheck": true
+  },
+  "include": [
+    "lib/**/*.ts",
+    "src/**/*.ts",
+    "tests/**/*.ts",
+    "node-shims.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "app"
+  ]
+}

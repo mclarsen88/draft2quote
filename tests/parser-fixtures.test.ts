@@ -1,0 +1,5 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import fs from 'node:fs'; import { parseShopifyInvoice } from '../lib/parser/index.js';
+const url='https://industrial-supply.myshopify.com/invoices/redacted-token';
+test('parses standard invoice tables and totals',()=>{ const q=parseShopifyInvoice(fs.readFileSync('tests/fixtures/standard.html','utf8'),url); assert.equal(q.quote.sourceOrderNumber,'#D1001'); assert.equal(q.lineItems.length,2); assert.equal(q.pricing.total?.amountMinor,29700); assert.equal(q.extraction.reconciliation?.matches,true); });
+test('prefers structured order data',()=>{ const q=parseShopifyInvoice(fs.readFileSync('tests/fixtures/structured.html','utf8'),url); assert.equal(q.lineItems[0].sku,'V-9'); assert.equal(q.extraction.fieldConfidence.lineItems,'high'); });
+test('warns on expired pages with no items',()=>{ const q=parseShopifyInvoice(fs.readFileSync('tests/fixtures/expired.html','utf8'),url); assert.equal(q.extraction.warnings.some(w=>w.code==='invoice_expired'),true); assert.equal(q.extraction.unresolvedFields.includes('lineItems'),true); });
