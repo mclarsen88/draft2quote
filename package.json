@@ -12,10 +12,5 @@
     "db:migrate": "echo \"Review prisma/schema.prisma; run your migration tool in a safe dev environment.\""
   },
   "dependencies": {},
-  "devDependencies": {
-    "typescript": "^6.0.3"
-  },
-  "engines": {
-    "node": ">=22"
-  }
+  "devDependencies": {}
 }

@@ -39,7 +39,3 @@ Sanitized HTML fixtures live in `tests/fixtures`. Expected behavior is asserted 
 ## Security requirements
 
 Only approved Shopify storefront/checkout hosts may be fetched. Invoice URLs are sensitive, redacted in errors, and are never sent to third-party parsing services. Untrusted Shopify HTML is parsed into `QuoteData`; it is not rendered directly.
-
-## Vercel build note
-
-The build script uses `tsc`, so `typescript` is declared in `devDependencies`. Vercel must install development dependencies during the build step; do not deploy with an install mode that omits dev dependencies before running `npm run build`.
