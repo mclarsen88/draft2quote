@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "dev": "node dist/src/server.js",
+    "build": "tsc --noEmit false",
+    "start": "node dist/src/server.js",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test dist/tests/*.js",
+    "pretest": "tsc --noEmit false",
+    "test:fixtures": "node --test dist/tests/parser-fixtures.test.js",
+    "test:integration": "node --test dist/tests/integration.test.js",
+    "db:migrate": "echo \"Review prisma/schema.prisma; run your migration tool in a safe dev environment.\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
